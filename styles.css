@@ -1,118 +1,146 @@
 /* General Styles */
 body {
-    margin: 0;
-    font-family: 'Dancing Script', cursive, sans-serif;
-    background-color: #ffe6e9;
-    color: #ff6b81;
-    text-align: center;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  /* Container */
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    position: relative;
-    z-index: 2; /* Ensure it stays above the hearts */
-  }
-  
-  /* Pages */
-  .page {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .page.active {
-    display: flex;
-  }
-  
-  /* Front Page */
-  #front-page h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  #click-me-button {
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    background-color: #ff6b81;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  #click-me-button:hover {
-    background-color: #ff8fa0;
-  }
-  
-  /* Message Page */
-  #message-box {
-    font-size: 1.5rem;
-    padding: 20px;
-    margin-bottom: 20px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    max-width: 80%;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  #next-button {
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    background-color: #ff6b81;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  #next-button:hover {
-    background-color: #ff8fa0;
-  }
-  
-  /* Heart Background */
-  body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1; /* Ensure hearts are below content */
-    overflow: hidden;
-    pointer-events: none;
-  }
-  
-  .heart {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: #ff8fa0;
-    clip-path: polygon(50% 0%, 100% 35%, 85% 100%, 50% 70%, 15% 100%, 0% 35%);
+  margin: 0;
+  font-family: 'Dancing Script', cursive, sans-serif;
+  background-color: #ffe6e9;
+  color: #ff6b81;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  z-index: 2; /* Ensure it stays above the hearts */
+}
+
+/* Pages */
+.page {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px; /* Padding for smaller screens */
+}
+
+.page.active {
+  display: flex;
+}
+
+/* Front Page */
+#front-page h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#click-me-button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #ff6b81;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#click-me-button:hover {
+  background-color: #ff8fa0;
+}
+
+/* Message Page */
+#message-box {
+  font-size: 1.5rem;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  max-width: 600px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#next-button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #ff6b81;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#next-button:hover {
+  background-color: #ff8fa0;
+}
+
+/* Heart Background */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Ensure hearts are below content */
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #ff8fa0;
+  clip-path: polygon(50% 0%, 100% 35%, 85% 100%, 50% 70%, 15% 100%, 0% 35%);
+  opacity: 0.8;
+  animation: float 6s infinite ease-in-out;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(1);
     opacity: 0.8;
-    animation: float 6s infinite ease-in-out;
   }
-  
-  @keyframes float {
-    0% {
-      transform: translateY(0) scale(1);
-      opacity: 0.8;
-    }
-    50% {
-      transform: translateY(-50px) scale(1.2);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(0) scale(1);
-      opacity: 0.8;
-    }
+  50% {
+    transform: translateY(-50px) scale(1.2);
+    opacity: 1;
   }
-  
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+}
+
+/* Responsive Design: Mobile Adjustments */
+@media screen and (max-width: 768px) {
+  #front-page h1 {
+    font-size: 1.5rem;
+  }
+
+  #click-me-button {
+    padding: 8px 16px;
+    font-size: 1rem;
+  }
+
+  #message-box {
+    font-size: 1.2rem;
+    padding: 15px;
+  }
+
+  #next-button {
+    padding: 8px 16px;
+    font-size: 1rem;
+  }
+
+  .heart {
+    width: 15px;
+    height: 15px;
+  }
+}
